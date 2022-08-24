@@ -1,0 +1,436 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: 满心欢喜
+subtitle: '满心欢喜の博客'
+description: '博客因兴趣诞生,在不断完善中'
+keywords: '科学与技术 软件工程 计算机 网络安全 渗透测试'
+author: 满心欢喜
+language: zh-CN
+timezone: ''
+
+aplayer:
+  meting: true
+  asset_inject: false
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
+url: http://ze520.cn
+root: /
+# permalink: :year/:month/:day/:title/
+permalink: posts/:abbrlink.html  # p 是自定义的前缀
+abbrlink:
+    alg: crc32   #算法： crc16(default) and crc32
+    rep: hex     #进制： dec(default) and hex
+permalink_defaults:
+pretty_urls:
+  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+  - 'tools/*'
+  - 'tools/**'
+  - 'GoogleHacking/*'
+  - 'GoogleHacking/**'
+  - 'Windows/*'
+  - 'Windows/**'
+
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link:
+  enable: true # Open external links in new tab
+  field: site # Apply to the whole site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: false
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs:
+  enable: true
+  preprocess: true
+  line_number: true
+  tab_replace: ''
+
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
+  per_page: 12 #下半部文章页面显示数
+  order_by: -date
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Metadata elements
+## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+meta_generator: true
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+## updated_option supports 'mtime', 'date', 'empty'
+updated_option: 'mtime'
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 6   # 推荐文章以及分类标签显示数
+pagination_dir: page
+
+# Include / Exclude file(s)
+## include:/exclude: options only apply to the 'source/' folder
+include:
+exclude:
+ignore:
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: butterfly
+
+# Extensions
+## Plugins: http://hexo.io/plugins/
+#RSS订阅
+plugin:
+- hexo-generator-feed
+- hexo-generator-baidu-sitemap
+- hexo-generator-sitemap
+
+baidusitemap:
+  path: baidusitemap.xml
+  
+sitemap:
+  path: sitemap.xml
+  rel: false
+  tags: true
+  categories: true
+# Deployment
+## Docs: https://hexo.io/docs/one-command-deployment
+deploy:
+- type: 'git'
+  repo: git@github.com:wangai14/vs.git
+  branch: master
+- type: baidu_url_submitter # 这是新加的百度主动推送
+
+# baidu submit
+baidu_url_submit:
+  count: 40                                      # 提交最新的一个链接
+  host: ze520.cn     # 在百度站长平台中注册的域名
+  token: gRbThmOSMXNz4Sig    # 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!
+  path: baidu_urls.txt                # 文本文档的地址， 新链接会保存在此文本文档里
+
+# matery搜索功能
+search:
+  path: search.xml
+  field: post
+# https://github.com/hexojs/hexo-generator-feed
+#Feed Atom
+feed:
+    type: atom
+    path: atom.xml
+    limit: 20
+rss: /atom.xml
+# 中文链接转拼音
+permalink_pinyin:
+  enable: true
+  separator: '-' # default: '-'
+
+# emoji表情支持
+githubEmojis: 
+  enable: true
+  className: github-emoji
+  inject: true
+  styles: 
+  customEmojis: 
+
+lazyload:
+  enable: false  # 是否开启图片懒加载
+  onlypost: true  # 是否只对文章的图片做懒加载
+  loadingImg: https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg # eg ./images/loading.gif
+
+#电子钟
+# electric_clock
+# see https://akilar.top/posts/4e39cf4a/
+electric_clock:
+  enable: true # 开关
+  priority: 8 #过滤器优先权
+  enable_page: all # 应用页面
+  exclude:
+    # - /posts/
+    # - /about/
+  layout: # 挂载容器类型
+    type: class
+    name: sticky_layout
+    index: 0
+  loading: https://cdn.cbd.int/hexo-butterfly-clock/lib/loading.gif #加载动画自定义
+  # clock_css: https://cdn.cbd.int/anzhiyu-blog@latest/css/clock.min.css
+  clock_css: /css/clock.min.css
+  clock_js: /js/clock.js
+  # clock_js: https://cdn.cbd.int/anzhiyu-blog/js/clock.min.js
+  # clock_js: https://cdn.cbd.int/hexo-butterfly-clock/lib/clock.min.js
+  ip_api: https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0
+  # ip_api: https://pv.sohu.com/cityjson?ie=utf-8
+  # ip_api: https://restapi.amap.com/v3/ip?key=1&s=rsv3
+
+
+
+
+
+# Live2D
+## https://github.com/EYHN/hexo-helper-live2d
+live2d:
+  enable: true #开关插件版看板娘
+  scriptFrom: local # 默认
+  # scriptFrom: https://cdn.cbd.int/live2d-widget@3.x/lib/L2Dwidget.min.js # 你的自定义 url
+  tagMode: false # 标签模式, 是否仅替换 live2d tag标签而非插入到所有页面中
+  debug: false # 调试, 是否在控制台输出日志
+  model:
+    use: live2d-widget-model-koharu # npm-module package name
+    # use: https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json # 你的自定义 url
+  display:
+    position: left #控制看板娘位置
+    width: 150 #控制看板娘大小
+    height: 300 #控制看板娘大小
+  mobile:
+    show: false # 手机中是否展示
+# 追番插件
+# https://github.com/HCLonely/hexo-bilibili-bangumi
+bangumi: # 追番设置
+  enable: true
+  path:
+  vmid: 372204786
+  title: '追番列表'
+  quote: '生命不息，追番不止！'
+  show: 1
+  lazyload: false
+  loading:
+  metaColor:
+  color:
+  webp:
+  progress:
+  extra_options:
+    key: value
+cinema: # 追剧设置
+  enable: false
+  path:
+  vmid: 372204786
+  title: '追剧列表'
+  quote: '生命不息，追剧不止！'
+  show: 1
+  lazyload: true
+  loading:
+  metaColor:
+  color:
+  webp:
+  progress:
+  extra_options:
+    key: value
+#添加 wowjs 特效
+# wowjs
+# see https://www.npmjs.com/package/hexo-butterfly-wowjs
+wowjs:
+  enable: true #控制动画开关。true是打开，false是关闭
+  priority: 10 #过滤器优先级
+  mobile: false #移动端是否启用，默认移动端禁用
+  animateitem:
+    - class: recent-post-item #必填项，需要添加动画的元素的class
+      style: animate__zoomIn #必填项，需要添加的动画
+      duration: 1.5s #选填项，动画持续时间，单位可以是ms也可以是s。例如3s，700ms。
+      delay: 200ms #选填项，动画开始的延迟时间，单位可以是ms也可以是s。例如3s，700ms。
+      offset: 30 #选填项，开始动画的距离（相对浏览器底部）
+      iteration: 1 #选填项，动画重复的次数
+    - class: card-widget
+      style: animate__zoomIn
+      delay: 200ms
+    # - class: flink-list-card
+    #   style: wowpanels
+    - class: flink-list-card
+      style: animate__flipInY
+      duration: 3s
+    - class: flink-list-card
+      style: animate__animated
+      duration: 3s
+    - class: article-sort-item
+      style: animate__slideInRight
+      duration: 1.5s
+    - class: site-card
+      style: animate__flipInY
+      duration: 3s
+    - class: site-card
+      style: animate__animated
+      duration: 3s
+  animate_css: https://cdn.cbd.int/hexo-butterfly-wowjs/lib/animate.min.css
+  wow_js: https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow.min.js
+  wow_init_js: https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow_init.js
+  #底部闹钟
+# footer_beautify
+# 页脚计时器：[Native JS Timer](https://akilar.top/posts/b941af/)
+# 页脚徽标：[Add Github Badge](https://akilar.top/posts/e87ad7f8/)
+footer_beautify:
+  enable:
+    timer: true # 计时器开关
+    bdage: true # 徽标开关
+  priority: 5 #过滤器优先权
+  enable_page: all # 应用页面
+  exclude:
+    # - /posts/
+    # - /about/
+  layout: # 挂载容器类型
+    type: id
+    name: footer-wrap
+    index: 0
+  # 计时器部分配置项
+  runtime_js: https://cdn.cbd.int/anzhiyu-blog@latest/js/runtime.min.js
+  runtime_css: https://cdn.cbd.int/anzhiyu-blog@latest/css/runtime.min.css
+  # 徽标部分配置项
+  swiperpara: 0 #若非0，则开启轮播功能，每行徽标个数
+  bdageitem:
+    - link: https://hexo.io/ #徽标指向网站链接
+      shields: https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo #徽标API
+      message: 博客框架为Hexo_v5.4.0 #徽标提示语
+    - link: https://butterfly.js.org/
+      shields: https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender
+      message: 主题版本Butterfly_v3.8.2
+    - link: https://www.jsdelivr.com/
+      shields: https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr
+      message: 本站使用JsDelivr为静态资源提供CDN加速
+    - link: https://beian.miit.gov.cn/#/Integrated/index
+      shields: https://img.shields.io/badge/湘ICP备-2022004213号-e1d492?style=flat&logo=data:image/png;base64,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
+      message: 本站已在湘进行备案
+    - link: https://github.com/
+      shields: https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub
+      message: 本站项目由Github托管
+    - link: http://creativecommons.org/licenses/by-nc-sa/4.0/
+      shields: https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris
+      message: 本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可
+
+  # swiper_css: https://cdn.cbd.int/hexo-butterfly-swiper/lib/swiper.min.css
+  # swiper_js: https://cdn.cbd.int/hexo-butterfly-swiper/lib/swiper.min.js
+  # swiperbdage_init_js: https://cdn.cbd.int/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js
+
+  #git显示
+  # hexo-filter-gitcalendar
+# see https://akilar.top/posts/1f9c68c9/
+gitcalendar:
+  enable: true # 开关
+  priority: 5 #过滤器优先权
+  enable_page: / # 应用页面
+  # butterfly挂载容器
+  layout: # 挂载容器类型
+    type: id
+    name: recent-posts
+    index: 0
+  # volantis挂载容器
+  # layout:
+  #   type: class
+  #   name: l_main
+  #   index: 0
+  # matery挂载容器
+  # layout:
+  #   type: id
+  #   name: indexCard
+  #   index: 0
+  # mengd挂载容器
+  # layout:
+  #   type: class
+  #   name: content
+  #   index: 0
+  user: live2364li #git用户名
+  apiurl: 'https://python-github-calendar-api-nu.vercel.app'
+  minheight:
+    pc: 280px #桌面端最小高度
+    mibile: 0px #移动端最小高度
+  color: "['#e4dfd7', '#f9f4dc', '#f7e8aa', '#f7e8aa', '#f8df72', '#fcd217', '#fcc515', '#f28e16', '#fb8b05', '#d85916', '#f43e06']" #橘黄色调
+  # color: "['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f']" #浅紫色调
+  # color: "['#ebedf0', '#f0fff4', '#dcffe4', '#bef5cb', '#85e89d', '#34d058', '#28a745', '#22863a', '#176f2c', '#165c26', '#144620']" #翠绿色调
+  # color: "['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c']" #天青色调
+  container: .recent-post-item(style='width:100%;height:auto;padding:10px;') #父元素容器，需要使用pug语法
+  gitcalendar_css: https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.css
+  gitcalendar_js: https://npm.elemecdn.com/hexo-filter-gitcalendar/lib/gitcalendar.js
+
+  #自动推送5个小格
+  # hexo-butterfly-swiper
+# see https://akilar.top/posts/8e1264d1/
+swiper:
+  enable: true # 开关
+  priority: 5 #过滤器优先权
+  enable_page: all # 应用页面
+  timemode: date #date/updated
+  layout: # 挂载容器类型
+    type: id
+    name: recent-posts
+    index: 0
+  default_descr: 再怎么看我也不知道怎么描述它的啦！
+  swiper_css: https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css #swiper css依赖
+  swiper_js: https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js #swiper js依赖
+  custom_css: https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css # 适配主题样式补丁
+  custom_js: https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js # swiper初始化方法
+#站点动态
+  #分类磁铁
+# hexo-butterfly-categories-card
+# see https://akilar.top/posts/a9131002/
+categoryBar:
+  enable: true # 开关
+  priority: 5 #过滤器优先权
+  enable_page: / # 应用页面
+  layout: # 挂载容器类型
+    type: id
+    name: recent-posts
+    index: 0
+  column: odd # odd：3列 | even：4列
+  row: 1 #显示行数，默认两行，超过行数切换为滚动显示
+  message:
+    - descr: 大学学习史
+      cover: https://cdn.cbd.int/akilar-candyassets@1.0.36/image/cover1.webp
+    - descr: 前端成长历程
+      cover: https://cdn.cbd.int/akilar-candyassets@1.0.36/image/cover2.webp
+    - descr: 生活欢乐多
+      cover: https://cdn.cbd.int/akilar-candyassets@1.0.36/image/cover3.webp
+    - descr:
+      cover: https://cdn.cbd.int/akilar-candyassets@1.0.36/image/cover4.webp
+    - descr:
+      cover: https://cdn.cbd.int/akilar-candyassets@1.0.36/image/cover5.webp
+    - descr:
+      cover: https://cdn.cbd.int/akilar-candyassets@1.0.36/image/cover6.webp
+  custom_css: https://cdn.cbd.int/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css
+
+  #友链朋友圈
+  # fcircle
+# see https://akilar.top/posts/62f13a97/
+fcircle:
+  enable: true #控制开关
+  apiurl: https://hexo-friendcircle-api-ai9d4hwad-anzhiyu-c.vercel.app/api #api地址
+  initnumber: 20 #【可选】页面初始化展示文章数量
+  stepnumber: 10 #【可选】每次加载增加的篇数
+  css: https://cdn.cbd.int/anzhiyu-blog@latest/css/friend.min.css #【可选】开发者接口，自定义css链接
+  js: https://cdn.cbd.int/anzhiyu-blog@latest/js/fcircle.min.js #【可选】开发者接口，自定义js链接
+  path: #【可选】fcircle的路径名称。默认为 fcircle，生成的页面为 fcircle/index.html
+  front_matter: #【可选】fcircle页面的 front_matter 配置
+    title: 朋友圈
+    comments: false
