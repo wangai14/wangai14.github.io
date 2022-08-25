@@ -20,7 +20,7 @@ aplayer:
 url: https://wangai14.github.io/Dao.github.io/
 root: /
 # permalink: :year/:month/:day/:title/
-permalink: posts/:abbrlink.html  # p 是自定义的前缀
+permalink: year/:month/:day/:title/  # p 是自定义的前缀
 abbrlink:
     alg: crc32   #算法好： crc16(default) and crc32
     rep: hex     #进制： dec(default) and hex
@@ -175,31 +175,68 @@ lazyload:
   loadingImg: https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg # eg ./images/loading.gif
 
 #电子钟
-# electric_clock
-# see https://akilar.top/posts/4e39cf4a/
 electric_clock:
-  enable: true # 开关
-  priority: 8 #过滤器优先权
-  enable_page: all # 应用页面
-  exclude:
-    # - /posts/
-    # - /about/
-  layout: # 挂载容器类型
+  priority: 5
+  enable: true
+  enable_page: all
+  layout:
     type: class
     name: sticky_layout
     index: 0
-  loading: https://cdn.cbd.int/hexo-butterfly-clock/lib/loading.gif #加载动画自定义
-  # clock_css: https://cdn.cbd.int/anzhiyu-blog@latest/css/clock.min.css
-  clock_css: /css/clock.min.css
-  clock_js: /js/clock.js
-  # clock_js: https://cdn.cbd.int/anzhiyu-blog/js/clock.min.js
-  # clock_js: https://cdn.cbd.int/hexo-butterfly-clock/lib/clock.min.js
-  ip_api: https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0
-  # ip_api: https://pv.sohu.com/cityjson?ie=utf-8
-  # ip_api: https://restapi.amap.com/v3/ip?key=1&s=rsv3
+  temple_html: '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img id="card-clock-loading" src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-clock/clock/images/weather/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading" class="entered loading"></div></div></div></div></div>'
 
+#历史上的今天插件
+history_calendar:
+  priority: 4
+  enable: true
+  enable_page: all
+  layout:
+    type: class
+    name: sticky_layout
+    index: 0
+  temple_html: '<div class="card-widget card-history"><div class="card-content"><div class="item-headline"><i class="fas fa-clock fa-spin"></i><span>那年今日</span></div><div id="history-baidu" style="height: 100px;overflow: hidden"><div class="history_swiper-container" id="history-container" style="width: 100%;height: 100%"><div class="swiper-wrapper" id="history_container_wrapper" style="height:20px"></div></div></div></div>'
 
+#主题文章双栏布局插件
+butterfly_article_double_row:
+  enable: true
 
+#hexo-magnet 插件 1.0
+magnet:
+  enable: true
+  priority: 1
+  enable_page: /
+  type: categories
+  devide: 2
+  display:
+    - name: 教程
+      display_name: 小王の魔改教程
+      icon: 📚
+    - name: 游戏评测
+      display_name: 小王の游戏评测
+      icon: 🎮
+    - name: 生活趣闻
+      display_name: 小王の生活趣闻
+      icon: 🐱‍👓
+    - name: vue
+      display_name: 小王の编程学习
+      icon: 👩‍💻
+    - name: 学习
+      display_name: 小王の读书笔记
+      icon: 📒
+    - name: 随想
+      display_name: 小王の胡思乱想
+      icon: 💡
+  color_setting:
+    text_color: black
+    text_hover_color: white
+    background_color: "#f2f2f2"
+    background_hover_color: "#b30070"
+  layout:
+    type: id
+    name: recent-posts
+    index: 0
+  temple_html: '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet">${temple_html_item}</div></div>'
+  plus_style: ""
 
 
 # Live2D
