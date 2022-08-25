@@ -443,13 +443,13 @@ chatra:
 # https://www.tidio.com/
 tidio:
   enable: false
-  public_key:
+  public_key: byvqupok23fuoercqwyckjyhtqgee5m6
 
 # daovoice
 # http://daovoice.io/
 daovoice:
-  enable: false
-  app_id: d5a77f62
+  enable: true
+  app_id: 18bf91a8
 
 # gitter
 # https://gitter.im/

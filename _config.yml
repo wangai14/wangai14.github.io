@@ -17,7 +17,7 @@ aplayer:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: https://wangai14.github.io/Dao.github.io/
+url: https://Dao.github.io
 root: /
 # permalink: :year/:month/:day/:title/
 permalink: year/:month/:day/:title/  # p 是自定义的前缀
