@@ -22,7 +22,7 @@ root: /
 # permalink: :year/:month/:day/:title/
 permalink: posts/:abbrlink.html  # p 是自定义的前缀
 abbrlink:
-    alg: crc32   #算法： crc16(default) and crc32
+    alg: crc32   #算法好： crc16(default) and crc32
     rep: hex     #进制： dec(default) and hex
 permalink_defaults:
 pretty_urls:
