@@ -15,8 +15,8 @@ comments: false
 
 
 ## 联系我
-B站：<a href="https://space.bilibili.com/322245764">仙气のxianqi</a>（萌新up）
+B站：<a href="https://space.bilibili.com/322245764">仙气の满心欢喜の博客</a>（萌新up）
 
-QQ：2287853439 （嘀嘀~，麻烦让一下，我要开车了！）
+QQ：584524731 （嘀嘀~，麻烦让一下，我要开车了！）
 
 座右铭：既然选择了远方 便只顾风雨兼程

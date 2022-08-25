@@ -17,7 +17,7 @@ aplayer:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://ze520.cn
+url: https://wangai14.github.io/Dao.github.io/
 root: /
 # permalink: :year/:month/:day/:title/
 permalink: posts/:abbrlink.html  # p 是自定义的前缀
@@ -134,7 +134,7 @@ sitemap:
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
 - type: 'git'
-  repo: git@github.com:wangai14/vs.git
+  repo: git@github.com:wangai14/Dao.github.io.git
   branch: master
 - type: baidu_url_submitter # 这是新加的百度主动推送
 
